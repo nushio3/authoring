@@ -18,7 +18,7 @@ cabal-version:       >=1.8
 library
   hs-source-dirs:    src/
   exposed-modules:     
-    Text.Authoring.LaTeX
+    Text.Authoring.Document
   -- other-modules:       
   build-depends:
       base ==4.6.*
