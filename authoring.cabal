@@ -18,12 +18,15 @@ cabal-version:       >=1.8
 library
   hs-source-dirs:    src/
   exposed-modules:     
+    Text.Authoring.Combinator.Scribe
     Text.Authoring.Document
   -- other-modules:       
   build-depends:
       base ==4.6.*
     , citation-resolve
+    , HaTeX >= 3.8
     , lens
     , mtl
+    , safe
     , text
   
