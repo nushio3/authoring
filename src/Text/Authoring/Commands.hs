@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
-module Text.LaTeX.Author.Commands where
+module Text.Authoring.Commands where
 
 import           Control.Lens (use, (.=), (%=))
 import           Control.Monad

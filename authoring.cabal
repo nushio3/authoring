@@ -16,6 +16,14 @@ build-type:          Simple
 cabal-version:       >=1.8
 
 library
-  -- exposed-modules:     
+  hs-source-dirs:    src/
+  exposed-modules:     
+    Text.Authoring.LaTeX
   -- other-modules:       
-  build-depends:       base ==4.6.*
+  build-depends:
+      base ==4.6.*
+    , citation-resolve
+    , lens
+    , mtl
+    , text
+  

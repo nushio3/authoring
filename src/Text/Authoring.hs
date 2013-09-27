@@ -1,8 +1,7 @@
-module Text.LaTeX.Author (
-  module Text.LaTeX.Author.State,
-  module Text.LaTeX.Author.Commands
-  
+module Text.Authoring (
+  module Text.Authoring.State,
+  module Text.Authoring.Commands
 ) where
 
-import Text.LaTeX.Author.State
-import Text.LaTeX.Author.Commands
+import Text.Authoring.State
+import Text.Authoring.Commands

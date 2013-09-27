@@ -5,7 +5,7 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Text.LaTeX.Author.State where
+module Text.Authoring.State where
 
 import           Control.Lens ((.~),(&),(^.))
 import           Control.Lens.TH (makeLenses)
