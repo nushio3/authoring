@@ -18,19 +18,18 @@ import Text.Authoring.Document
 import Text.Authoring.State
 
 
-citet, citep :: MonadAuthor s w m => [String] -> m ()
+citet, citep :: MonadAuthoring s w m => [String] -> m ()
 
 citet = citationGen "citet"
 citep = citationGen "citep"
 
-citet1, citep1 :: MonadAuthor s w m => String -> m ()
+citet1, citep1 :: MonadAuthoring s w m => String -> m ()
 
 citet1 = citationGen "citet" . (:[]) -- + ---<===   I am a long man lying
 citep1 = citationGen "citep" . (:[]) -- + ---<===   We are long men lying
 
 -- | make a citation to a document(s).
-citationGen :: (MonadState s m, HasAuthorState s, HasDatabase s,
-          MonadWriter w m, HasDocument w, MonadIO m) => Text.Text -> [String] -> m ()
+citationGen :: MonadAuthoring s w m => Text.Text -> [String] -> m ()
 citationGen cmdName  urls = do
   forM_ urls $ \url -> do
     resolve url

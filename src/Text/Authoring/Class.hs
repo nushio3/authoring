@@ -10,4 +10,4 @@ import           Text.Authoring.State
 import qualified Text.CSL.Input.Identifier.Internal as Citation
 
 -- | The all-in-one environ for writing paper.  
-type MonadAuthor s w m = (MonadState s m, HasAuthorState s, Citation.HasDatabase s, MonadWriter w m, HasDocument w, MonadIO m)  
+type MonadAuthoring s w m = (MonadState s m, HasAuthorState s, Citation.HasDatabase s, MonadWriter w m, HasDocument w, MonadIO m)  
