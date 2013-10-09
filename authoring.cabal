@@ -23,7 +23,9 @@ source-repository head
 library
   hs-source-dirs:    src/
   exposed-modules:     
+    Text.Authoring
     Text.Authoring.Bibliography
+    Text.Authoring.Class
     Text.Authoring.Combinator
     Text.Authoring.Combinator.Cite
     Text.Authoring.Combinator.Meta
