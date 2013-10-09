@@ -20,10 +20,13 @@ library
   exposed-modules:     
     Text.Authoring.Combinator.Scribe
     Text.Authoring.Document
+    Text.Authoring.Label
+    Text.Authoring.State
   -- other-modules:       
   build-depends:
       base ==4.6.*
-    , citation-resolve
+    , citation-resolve >= 0.4
+    , containers >= 0.5
     , HaTeX >= 3.8
     , lens
     , mtl

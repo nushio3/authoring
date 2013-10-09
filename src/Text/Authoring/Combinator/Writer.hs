@@ -3,7 +3,7 @@
 -- | Names of this module are intentitionally kept too short.
 --   Use this module with quantifier.
 
-module Text.Authoring.Combinator.Scribe where
+module Text.Authoring.Combinator.Writer where
 
 import Control.Lens (scribe)
 import Control.Monad.Writer
@@ -18,10 +18,6 @@ import qualified Text.LaTeX.Base.Texy as LTX
 
 
 import Text.Authoring.Document
-
--- | Show an object into Text, but do not quote them if 
---   they are of stringy types.
-
 
 
 -- | Scribe a LaTeX syntax into the target document.
