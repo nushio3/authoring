@@ -18,7 +18,11 @@ cabal-version:       >=1.8
 library
   hs-source-dirs:    src/
   exposed-modules:     
-    Text.Authoring.Combinator.Scribe
+    Text.Authoring.Combinator.Cite
+    Text.Authoring.Combinator.Meta
+    Text.Authoring.Combinator.Ref
+    Text.Authoring.Combinator.Writer
+
     Text.Authoring.Document
     Text.Authoring.Label
     Text.Authoring.State

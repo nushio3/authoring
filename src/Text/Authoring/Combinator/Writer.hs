@@ -16,9 +16,7 @@ import qualified Text.LaTeX.Base.Render as LTX
 import qualified Text.LaTeX.Base.Syntax as LTX 
 import qualified Text.LaTeX.Base.Texy as LTX 
 
-
 import Text.Authoring.Document
-
 
 -- | Scribe a LaTeX syntax into the target document.
 

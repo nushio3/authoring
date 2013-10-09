@@ -7,7 +7,6 @@ import           Data.String (IsString(..))
 import           Data.Typeable
 import           Data.Text (pack)
 import           Text.LaTeX (raw)
-import           Text.LaTeX.Base.Texy
 
 -- | 'Label's are used to create a unique reference label
 --   within a paper.
@@ -30,10 +29,7 @@ instance IsString Label where
 instance Show Label where
   show (FromType r) = show r
   show (FromString s) = s
-  show (Ap a b) = show a ++ ":" ++ show b
-
-instance Texy Label where
-  texy = raw . pack . show
+  show (Ap a b) = show a ++ "." ++ show b
 
 infixl 1 ./
 

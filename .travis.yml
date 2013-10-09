@@ -1,7 +1,1 @@
 language: haskell
-
-before_install:
-  make ghc-head;
-
-after_script:
-  cat dist/test/units-*-spec.log 
