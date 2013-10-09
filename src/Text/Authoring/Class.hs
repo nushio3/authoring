@@ -14,7 +14,7 @@ import qualified Text.CSL.Input.Identifier.Internal as Citation
 -- | The all-in-one environ for writing paper.  
 type MonadAuthoring s w m = (MonadState s m, HasAuthorState s, Citation.HasDatabase s, MonadWriter w m, HasDocument w, MonadIO m)  
 
--- | An example of monad transformer that can provide authoring environment.
+-- | An example of monad transformer that can provide full (but IO) authoring environment.
 
 type AuthoringT = RWST () Document AuthorState 
 
