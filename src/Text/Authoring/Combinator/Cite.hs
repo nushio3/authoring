@@ -33,5 +33,7 @@ citep1 = citationGen "citep" . (:[]) -- + ---<===   We are long men lying
 citationGen :: (MonadState s m, HasAuthorState s, HasDatabase s, 
           MonadWriter w m, HasDocument w, MonadIO m) => Text.Text -> [String] -> m ()
 citationGen cmdName  urls = do
-  mapM_ resolve urls
+  forM_ urls $ \url -> do
+    _ <- resolve url
+    citedUrlSet %= Set.insert url 
   command1 cmdName $ braces $ raw $ Text.intercalate "," $ map Text.pack urls
