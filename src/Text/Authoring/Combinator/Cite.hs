@@ -1,3 +1,4 @@
+{-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module Text.Authoring.Combinator.Cite where
@@ -10,30 +11,28 @@ import qualified Data.Set as Set
 import qualified Data.Text as Text
 import Text.CSL.Input.Identifier (resolve, HasDatabase)
 
-
+import Text.Authoring.Class
 import Text.Authoring.Combinator.Meta
 import Text.Authoring.Combinator.Writer
 import Text.Authoring.Document
 import Text.Authoring.State
 
 
-citet, citep :: (MonadState s m, HasAuthorState s, HasDatabase s, 
-          MonadWriter w m, HasDocument w, MonadIO m) => [String] -> m ()
+citet, citep :: MonadAuthor s w m => [String] -> m ()
 
 citet = citationGen "citet"
 citep = citationGen "citep"
 
-citet1, citep1 :: (MonadState s m, HasAuthorState s, HasDatabase s, 
-          MonadWriter w m, HasDocument w, MonadIO m) => String -> m ()
+citet1, citep1 :: MonadAuthor s w m => String -> m ()
 
 citet1 = citationGen "citet" . (:[]) -- + ---<===   I am a long man lying
 citep1 = citationGen "citep" . (:[]) -- + ---<===   We are long men lying
 
 -- | make a citation to a document(s).
-citationGen :: (MonadState s m, HasAuthorState s, HasDatabase s, 
+citationGen :: (MonadState s m, HasAuthorState s, HasDatabase s,
           MonadWriter w m, HasDocument w, MonadIO m) => Text.Text -> [String] -> m ()
 citationGen cmdName  urls = do
   forM_ urls $ \url -> do
-    _ <- resolve url
+    resolve url
     citedUrlSet %= Set.insert url 
   command1 cmdName $ braces $ raw $ Text.intercalate "," $ map Text.pack urls

@@ -1,3 +1,5 @@
+{-# LANGUAGE ConstraintKinds #-}
+{-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE TemplateHaskell #-}
 
 module Text.Authoring.State where
@@ -22,3 +24,5 @@ makeClassy ''AuthorState
 
 instance Citation.HasDatabase AuthorState where
   database = citationDB
+  
+  
