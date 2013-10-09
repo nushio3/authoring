@@ -1,4 +1,4 @@
-module Text.Authoring.Bibliography where
+module Text.Authoring.Bibliography (bibliographyContent, withDatabaseFile) where
 
 import           Control.Lens (use)
 import           Control.Monad
@@ -6,7 +6,7 @@ import           Control.Monad.State
 import           Control.Monad.IO.Class
 import qualified Data.Set as Set
 import qualified Data.Text as Text
-import           Text.CSL.Input.Identifier (toBibTeXItem, HasDatabase)
+import           Text.CSL.Input.Identifier (toBibTeXItem, HasDatabase, withDatabaseFile)
 
 import Text.Authoring.State
 
