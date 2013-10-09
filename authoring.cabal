@@ -4,7 +4,7 @@
 name:                authoring
 version:             0.1.0.0
 synopsis:            A library for writing papers
-description:         This package is parser combinator library for writing papers.
+description:         This package is a combinator library for writing papers.
 homepage:            http://github.com/nushio3/authoring
 bug-reports:         http://github.com/nushio3/authoring/issues
 license:             BSD3
