@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                authoring
-version:             0.2.1
+version:             0.2.2
 synopsis:            A library for writing papers
 description:         This package is a combinator library for writing papers.
 homepage:            http://github.com/nushio3/authoring
@@ -39,6 +39,7 @@ library
       base ==4.*
     , citation-resolve >= 0.4.2
     , containers >= 0.5
+    , data-default
     , HaTeX >= 3.8
     , lens
     , mtl

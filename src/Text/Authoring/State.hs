@@ -6,6 +6,7 @@ module Text.Authoring.State where
 
 import           Control.Lens
 import           Control.Lens.TH
+import           Data.Default
 import qualified Data.Map as Map
 import qualified Data.Set as Set
 import           Data.Text (Text)
@@ -25,4 +26,5 @@ makeClassy ''AuthorState
 instance Citation.HasDatabase AuthorState where
   database = citationDB
   
-  
+instance Default AuthorState where
+  def = AuthorState def def def
