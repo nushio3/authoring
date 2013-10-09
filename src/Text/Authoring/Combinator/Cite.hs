@@ -29,8 +29,6 @@ citet1, citep1 :: (MonadState s m, HasAuthorState s, HasDatabase s,
 citet1 = citationGen "citet" . (:[]) -- + ---<===   I am a long man lying
 citep1 = citationGen "citep" . (:[]) -- + ---<===   We are long men lying
 
-
-
 -- | make a citation to a document(s).
 citationGen :: (MonadState s m, HasAuthorState s, HasDatabase s, 
           MonadWriter w m, HasDocument w, MonadIO m) => Text.Text -> [String] -> m ()
