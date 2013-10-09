@@ -29,7 +29,7 @@ library
   -- other-modules:       
   build-depends:
       base ==4.*
-    , citation-resolve >= 0.4
+    , citation-resolve >= 0.4.1
     , containers >= 0.5
     , HaTeX >= 3.8
     , lens
