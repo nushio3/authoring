@@ -17,12 +17,13 @@ braces con = do
   con
   raw "}"
 
--- | command0 x = "\x"
+-- | command0 x = "\x "
 
 command0 :: (MonadWriter t m, HasDocument t) =>  Text -> m ()
 command0 x = do
   raw "\\"  
   raw x
+  raw "{}"  
 
   
 -- | command1 x con = "\x{con}"
