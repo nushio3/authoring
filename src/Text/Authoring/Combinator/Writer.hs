@@ -21,17 +21,28 @@ import Text.Authoring.Document
 -- | Scribe a LaTeX syntax into the target document.
 
 latex :: (MonadWriter t m, HasDocument t) => LaTeX -> m ()
-latex x = scribe latexSrc x
+latex = scribe latexSrc
 
 -- | Scribe a raw text (unescaped) into the target.
 
 raw :: (MonadWriter t m, HasDocument t) => Text -> m ()
-raw x = latex $ LTX.raw x
+raw = latex . LTX.raw 
 
+-- | Scribe a raw text (escaped) into the target.
 
--- | Shows objects of type 'a' using Show interface
---   Escapes LaTeX special characters.
+esc :: (MonadWriter t m, HasDocument t) => Text -> m ()
+esc = raw . LTX.protectText 
 
-esc :: (MonadWriter t m, HasDocument t, Show a) => a -> m ()
-esc x = raw $ LTX.protectText $ pack $ Prelude.show x
+-- | Shows objects of type 'a' using Show interface,
+--   without escaping LaTeX special characters.
+
+rawShow :: (MonadWriter t m, HasDocument t, Show a) => a -> m ()
+rawShow = raw . pack . Prelude.show 
+
+-- | Shows objects of type 'a' using Show interface,
+--   escaping LaTeX special characters.
+
+escShow :: (MonadWriter t m, HasDocument t, Show a) => a -> m ()
+escShow = esc . pack . Prelude.show 
+
 

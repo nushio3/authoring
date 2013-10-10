@@ -20,6 +20,9 @@ type MonadAuthoring s w m = (MonadState s m, HasAuthorState s, Citation.HasDatab
 
 type AuthoringT = RWST () Document AuthorState 
 
+
+-- | Run an authoring monad, returns the triple (monad return value, final author state, generated latex)
+
 runAuthoringT :: Monad m => AuthoringT m a -> m (a, AuthorState, LaTeX)
 runAuthoringT prog = do 
   (a,s,w) <- runRWST prog () def
