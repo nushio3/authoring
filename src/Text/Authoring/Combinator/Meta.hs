@@ -17,6 +17,13 @@ braces con = do
   con
   raw "}"
 
+-- | command0 x = "\x"
+
+command0 :: (MonadWriter t m, HasDocument t) =>  Text -> m ()
+command0 x = do
+  raw "\\"  
+  raw x
+
   
 -- | command1 x con = "\x{con}"
 
@@ -28,6 +35,16 @@ command1 x con = do
   con
   raw "}"
        
+-- | commandI x con = "{\x con}"
+
+commandI :: (MonadWriter t m, HasDocument t) =>  Text -> m () -> m ()
+commandI x con = do
+  raw "{\\"
+  raw x
+  raw " "
+  con
+  raw "}"
+
     
 -- | environment x con = "\begin{x}con\end{x}"    
   
