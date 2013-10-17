@@ -14,6 +14,9 @@ import qualified Text.CSL.Input.Identifier.Internal as Citation
 
 import           Text.Authoring.Label
 
+-- | The record type of everything you need to know
+--   to write a paper.
+
 data AuthorState
   = AuthorState
   { _labelMap :: Map.Map Label Text

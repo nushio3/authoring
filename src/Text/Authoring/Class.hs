@@ -27,3 +27,4 @@ runAuthoringT :: Monad m => AuthoringT m a -> m (a, AuthorState, LaTeX)
 runAuthoringT prog = do 
   (a,s,w) <- runRWST prog () def
   return (a,s,w ^. latexSrc)
+  
