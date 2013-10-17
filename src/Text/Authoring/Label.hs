@@ -1,5 +1,5 @@
 module Text.Authoring.Label 
-       ( Label(..),(<>),(./))
+       ( Label(..),(<>),(./), fromValue)
        where
 
 import           Data.Monoid
@@ -32,6 +32,10 @@ instance Show Label where
   show (Ap a b) = show a ++ "." ++ show b
 
 infixl 1 ./
+
+-- | Create a label from the type of a value.
+fromValue :: Typeable t => t -> Label
+fromValue = FromType . typeOf
 
 -- | Create a slightly different version of the label.
 (./) :: Show a => Label -> a -> Label

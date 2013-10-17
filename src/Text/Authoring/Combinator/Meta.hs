@@ -53,9 +53,9 @@ environment :: (MonadWriter t m, HasDocument t) =>  Text -> m () -> m ()
 environment x con = do
   raw "\\begin{"  
   raw x
-  raw "}\n"  
+  raw "}"  
   con
   raw "\\end{"  
   raw x
-  raw "}\n"  
+  raw "}"  
 
