@@ -34,6 +34,7 @@ library
     Text.Authoring.Document
     Text.Authoring.Label
     Text.Authoring.State
+    Text.Authoring.TH
   -- other-modules:       
   build-depends:
       base ==4.*
@@ -45,6 +46,7 @@ library
     , mtl
     , safe
     , text
+    , trifecta
     , transformers
 
   
