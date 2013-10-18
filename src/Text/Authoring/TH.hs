@@ -1,6 +1,29 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE TemplateHaskell #-}
 
+{-|
+
+This module provides quasi-quotes 'rawQ' and 'escQ' for writing papers. 
+The quasi-quotes will generate authoring monads, so you can use them in authoring 
+context like follows.
+
+> paragraph = do
+>   let takahashi2007 = citep ["isbn:9784130627184"] 
+>       val = 3e6
+>   [rawQ| The dielectric strength of air is $ #{val} $ V/m @{takahashi2007}.  |]
+
+We support antiquote syntax:
+
+>  #{val}
+
+for embedding values ('Show' instance is required), and
+
+>  @{...}
+
+for embedding authring monads.
+
+-}
+
 module Text.Authoring.TH (rawQ, escQ) where
 
 
@@ -19,8 +42,11 @@ import System.IO
 
 import Text.Authoring.Combinator.Writer (raw, esc)
 
+
+-- | Quote with LaTeX special characters escaped. 
 escQ = rawQ {quoteExp =  parseE (QQConfig { escaper = appE (varE 'esc)})}
 
+-- | Quote without escaping any special characters.                                                           
 rawQ :: QuasiQuoter
 rawQ = QuasiQuoter { 
   quoteExp = parseE (QQConfig { escaper = appE (varE 'raw)}),
