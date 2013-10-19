@@ -77,8 +77,11 @@ parseE cfg str = do
 
 cvtE :: QQConfig -> Component -> ExpQ
 cvtE cfg (StrPart x)    = escaper cfg $ appE (varE 'T.pack) $ stringE x
-cvtE cfg (EmbedShow x)  = escaper cfg $ appE (varE 'T.pack) $ appE (varE 'showJoin) (varE $ mkName $ trim x)
-cvtE _   (EmbedMonad x) = (varE $ mkName $ trim x)                           
+cvtE cfg (EmbedShow x)  = escaper cfg $ appE (varE 'T.pack) $ appE (varE 'showJoin) (chainAppE x)
+cvtE _   (EmbedMonad x) = chainAppE x
+
+chainAppE :: String -> ExpQ
+chainAppE str = foldr1 appE $ map (varE . mkName) $ words str
 
 trim :: String -> String
 trim = T.unpack . T.strip . T.pack
