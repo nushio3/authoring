@@ -34,12 +34,14 @@ import Data.Char (isSpace, toUpper, toLower)
 import Data.Typeable (Typeable)
 import Data.Monoid
 import qualified Data.Text as T
+import qualified Language.Haskell.Meta.Parse.Careful as Meta
 import Language.Haskell.TH
 import Language.Haskell.TH.Quote
 import Text.Trifecta
 import Text.Trifecta.Delta
 import Text.Parser.LookAhead
 import Text.PrettyPrint.ANSI.Leijen as Pretty hiding (line, (<>), (<$>), empty, string)
+import Text.Printf
 import Safe (readMay)
 import System.IO
 
@@ -77,11 +79,17 @@ parseE cfg str = do
 
 cvtE :: QQConfig -> Component -> ExpQ
 cvtE cfg (StrPart x)    = escaper cfg $ appE (varE 'T.pack) $ stringE x
-cvtE cfg (EmbedShow x)  = escaper cfg $ appE (varE 'T.pack) $ appE (varE 'showJoin) (chainAppE x)
-cvtE _   (EmbedMonad x) = chainAppE x
+cvtE cfg (EmbedShow x)  = 
+  either (fallback "#" x) 
+         (escaper cfg . appE [| T.pack . showJoin |] . return) $
+  Meta.parseExp x
+cvtE _   (EmbedMonad x) =  
+  either (fallback "@" x) return $
+  Meta.parseExp x
 
-chainAppE :: String -> ExpQ
-chainAppE str = foldr1 appE $ map (varE . mkName) $ words str
+fallback :: String -> String -> String -> ExpQ
+fallback sym str _ = [| esc . T.pack |] `appE` 
+                   (stringE $ printf "%s{%s}" sym str)
 
 trim :: String -> String
 trim = T.unpack . T.strip . T.pack
