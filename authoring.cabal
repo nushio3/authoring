@@ -42,6 +42,7 @@ library
     , citation-resolve >= 0.4.2
     , containers >= 0.5
     , data-default
+    , haskell-src-meta >= 0.6.0.4
     , HaTeX >= 3.8
     , lens
     , mtl
