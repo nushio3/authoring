@@ -18,11 +18,13 @@ import Text.Authoring.Document
 import Text.Authoring.State
 
 
+-- | Cite a list of documents
 citet, citep :: MonadAuthoring s w m => [String] -> m ()
 
 citet = citationGen "citet"
 citep = citationGen "citep"
 
+-- | Cite a single document
 citet1, citep1 :: MonadAuthoring s w m => String -> m ()
 
 citet1 = citationGen "citet" . (:[]) -- + ---<===   I am a long man lying
