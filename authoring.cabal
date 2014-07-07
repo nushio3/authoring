@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                authoring
-version:             0.3.3.1
+version:             0.3.4
 synopsis:            A library for writing papers
 description:         This package is a combinator library for writing papers.
 homepage:            http://github.com/nushio3/authoring
@@ -48,7 +48,7 @@ library
     , mtl
     , parsers
     , safe
-    , template-haskell
+    , template-haskell >= 2.9
     , text
     , trifecta
     , transformers

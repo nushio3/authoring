@@ -25,7 +25,7 @@ for embedding authring monads.
 
 -}
 
-module Text.Authoring.TH (rawQ, escQ, declareLabels) where
+module Text.Authoring.TH (rawQ, escQ, inputQ, declareLabels) where
 
 
 import Control.Applicative
@@ -52,6 +52,7 @@ import Text.Authoring.Label (Label, fromValue)
 -- | Quote with LaTeX special characters escaped. 
 escQ = rawQ {quoteExp =  parseE (QQConfig { escaper = appE (varE 'esc)})}
 
+
 -- | Quote without escaping any special characters.                                                           
 rawQ :: QuasiQuoter
 rawQ = QuasiQuoter { 
@@ -61,6 +62,11 @@ rawQ = QuasiQuoter {
   quoteDec  = error "Authoring QuasiQuotes are only for expression context" 
   }
 
+-- | Quote a filename, without escaping any special characters.                                                
+inputQ :: QuasiQuoter                                                
+inputQ = quoteFile rawQ                                                
+                                                
+                                                
 data QQConfig = QQConfig 
   { escaper :: ExpQ -> ExpQ }
 
