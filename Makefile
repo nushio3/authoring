@@ -18,7 +18,3 @@ install: init build test
 
 doc:
 	cabal haddock --hyperlink-source
-
-ghc:
-	- 7.8
-	- 7.10
