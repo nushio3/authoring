@@ -22,6 +22,7 @@ all:
 
 \bibliographystyle{apj}
 
+\hypersetup{pdfencoding=unicode}
 
 \begin{document}
 \title[Short title]{Integration of Numerical Experiments to Academic Writing}
